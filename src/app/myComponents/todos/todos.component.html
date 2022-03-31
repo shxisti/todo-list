@@ -1,0 +1,19 @@
+<!-- <ul *ngFor="let x of todos">
+  <li>{{x.sno}}-{{x.title}}-{{x.desc}}-{{x.active}}</li>
+</ul> -->
+<div class="container">
+  <h1 class="text-center mb-3">Todo List of Shristi</h1>
+
+  <div class="my-3">
+    <app-add-todo-items (todoAdd)="addToDo($event)"></app-add-todo-items>
+    <h4>Your Todos</h4>
+    <div *ngIf="this.todos.length===0; else elseBlock">No todo to display.</div>
+    <ng-template #elseBlock>
+      <div *ngFor="let todo of todos;index as i">
+        <app-todo-items [todo]="todo" [i]="i" (todoDelete)="deleteToDo($event)" (todoCheckBox)="changeActive($event)">
+        </app-todo-items>
+      </div>
+    </ng-template>
+
+  </div>
+</div>
